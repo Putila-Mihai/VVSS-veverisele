@@ -11,14 +11,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+
 public class AddPartController implements Initializable, Controller {
 
+    Logger logger = LogManager.getLogger(AddPartController.class.getName());
     // Declare fields
     private Stage stage;
     private Parent scene;
@@ -58,7 +62,6 @@ public class AddPartController implements Initializable, Controller {
     @FXML
     private TextField minTxt;
 
-    public AddPartController(){}
 
     @Override
     public void setService(InventoryService service){
@@ -106,7 +109,7 @@ public class AddPartController implements Initializable, Controller {
         alert.setContentText("Are you sure you want to cancel adding part?");
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK) {
-            System.out.println("Ok selected. Part addition canceled.");
+            logger.debug("Ok selected. Part addition canceled.");
             displayScene(event, "/fxml/MainScreen.fxml");
         } else {
             System.out.println("Cancel clicked.");

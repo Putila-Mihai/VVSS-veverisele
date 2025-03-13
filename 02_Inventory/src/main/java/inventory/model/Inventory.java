@@ -8,12 +8,12 @@ public class Inventory {
     
     // Declare fields
     private ObservableList<Product> products;
-    private ObservableList<Part> allParts;
+    private ObservableList<Part> parts;
     private int autoPartId;
     private int autoProductId;
     public Inventory(){
         this.products = FXCollections.observableArrayList();
-        this.allParts= FXCollections.observableArrayList();
+        this.parts = FXCollections.observableArrayList();
         this.autoProductId=0;
         this.autoPartId=0;
     }
@@ -46,9 +46,8 @@ public class Inventory {
             if(p.getName().contains(searchItem) || (p.getProductId()+"").equals(searchItem)) return p;
             isFound = true;
         }
-        if(isFound == false) {
-            Product product = new Product(0, null, 0.0, 0, 0, 0, null);
-            return product;
+        if(!isFound) {
+            return new Product(0, null, 0.0, 0, 0, 0, null);
         }
         return null;
     }
@@ -79,7 +78,7 @@ public class Inventory {
      * @param part 
      */
     public void addPart(Part part) {
-        allParts.add(part);
+        parts.add(part);
     }
     
     /**
@@ -87,7 +86,7 @@ public class Inventory {
      * @param part 
      */
     public void deletePart(Part part) {
-        allParts.remove(part);
+        parts.remove(part);
     }
     
     /**
@@ -96,7 +95,7 @@ public class Inventory {
      * @return 
      */
     public Part lookupPart(String searchItem) {
-        for(Part p:allParts) {
+        for(Part p: parts) {
             if(p.getName().contains(searchItem) || (p.getPartId()+"").equals(searchItem)) return p;
         }
         return null;
@@ -108,23 +107,23 @@ public class Inventory {
      * @param part 
      */
     public void updatePart(int index, Part part) {
-        allParts.set(index, part);
+        parts.set(index, part);
     }
     
     /**
      * Getter for allParts Observable List
      * @return 
      */
-    public ObservableList<Part> getAllParts() {
-        return allParts;
+    public ObservableList<Part> getParts() {
+        return parts;
     }
 
     /**
      *
      * @param list
      */
-    public void setAllParts(ObservableList<Part> list) {
-        allParts=list;
+    public void setParts(ObservableList<Part> list) {
+        parts =list;
     }
     
     /**

@@ -1,5 +1,6 @@
 package inventory.controller;
 
+import inventory.exceptions.AddProductControllerException;
 import inventory.model.Part;
 import inventory.model.Product;
 import inventory.service.InventoryService;
@@ -106,18 +107,23 @@ public class AddProductController implements Initializable, Controller {
      * Method to add to button handler to switch to scene passed as source
      * @param event
      * @param source
-     * @throws IOException
+     * @throws AddProductControllerException
      */
     @FXML
-    private void displayScene(ActionEvent event, String source) throws IOException {
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        FXMLLoader loader= new FXMLLoader(getClass().getResource(source));
-        //scene = FXMLLoader.load(getClass().getResource(source));
-        scene = loader.load();
-        Controller ctrl=loader.getController();
-        ctrl.setService(service);
-        stage.setScene(new Scene(scene));
-        stage.show();
+    private void displayScene(ActionEvent event, String source) throws AddProductControllerException {
+        try {
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(source));
+            //scene = FXMLLoader.load(getClass().getResource(source));
+            scene = loader.load();
+            Controller ctrl = loader.getController();
+            ctrl.setService(service);
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
+        catch (IOException e){
+            throw new AddProductControllerException("Error while displaying scene", e);
+        }
     }
     
     /**
@@ -162,7 +168,7 @@ public class AddProductController implements Initializable, Controller {
      * @throws IOException
      */
     @FXML
-    void handleCancelProduct(ActionEvent event) throws IOException {
+    void handleCancelProduct(ActionEvent event) throws AddProductControllerException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initModality(Modality.NONE);
         alert.setTitle("Confirmation Needed");
@@ -196,7 +202,7 @@ public class AddProductController implements Initializable, Controller {
      * @throws IOException
      */
     @FXML
-    void handleSaveProduct(ActionEvent event) throws IOException {
+    void handleSaveProduct(ActionEvent event) throws AddProductControllerException {
         String name = nameTxt.getText();
         String price = priceTxt.getText();
         String inStock = inventoryTxt.getText();

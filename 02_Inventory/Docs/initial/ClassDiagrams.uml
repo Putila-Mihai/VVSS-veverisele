@@ -3,21 +3,20 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="-21.5" y="-261.0">inventory.model.Part</node>
     <node x="490.5" y="374.0">inventory.controller.Controller</node>
-    <node x="758.0" y="487.0">inventory.controller.MainScreenController</node>
-    <node x="1101.0" y="559.0">inventory.controller.ModifyProductController</node>
-    <node x="1375.0" y="1006.0">inventory.Main</node>
-    <node x="-218.0" y="1006.0">inventory.model.Product</node>
-    <node x="-218.0" y="1573.0">toolbarButtonGraphics</node>
-    <node x="107.0" y="583.0">inventory.controller.ModifyPartController</node>
-    <node x="584.0" y="1006.0">inventory.model.Inventory</node>
-    <node x="-218.0" y="595.0">inventory.controller.AddPartController</node>
-    <node x="442.0" y="571.0">inventory.controller.AddProductController</node>
-    <node x="895.0" y="1006.0">inventory.service.InventoryService</node>
     <node x="180.0" y="191.0">inventory.model.InhousePart</node>
+    <node x="442.0" y="571.0">inventory.controller.AddProductController</node>
+    <node x="107.0" y="583.0">inventory.controller.ModifyPartController</node>
     <node x="249.0" y="1006.0">inventory.repository.InventoryRepository</node>
+    <node x="-218.0" y="595.0">inventory.controller.AddPartController</node>
+    <node x="-218.0" y="1573.0">toolbarButtonGraphics</node>
+    <node x="758.0" y="487.0">inventory.controller.MainScreenController</node>
+    <node x="-21.5" y="-261.0">inventory.model.Part</node>
+    <node x="1101.0" y="559.0">inventory.controller.ModifyProductController</node>
+    <node x="584.0" y="1006.0">inventory.model.Inventory</node>
     <node x="-218.0" y="191.0">inventory.model.OutsourcedPart</node>
+    <node x="-218.0" y="1006.0">inventory.model.Product</node>
+    <node x="895.0" y="1006.0">inventory.service.InventoryService</node>
   </nodes>
   <notes />
   <edges>
@@ -62,10 +61,8 @@
       <point x="0.0" y="201.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.29543039319872477" showDependencies="false" x="671.5" y="680.0" />
-  <SelectedNodes>
-    <node>toolbarButtonGraphics</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic" zoom="0.7212656083953244" showDependencies="false" x="552.0768939280574" y="379.3694388489206" />
+  <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>
     <Category>Fields</Category>

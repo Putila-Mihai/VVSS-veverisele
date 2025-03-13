@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/mehigh/IdeaProjects/VVSS-veverisele/02_Inventory</OriginalElement>
+  <nodes>
+    <node x="1031.5" y="2983.0">inventory.Main</node>
+    <node x="231.5" y="1489.0">inventory.exceptions.InventoryControllerException</node>
+    <node x="507.0" y="1266.0">inventory.model.OutsourcedPart</node>
+    <node x="339.0" y="506.0">inventory.model.Product</node>
+    <node x="107.0" y="2694.0">inventory.repository.InventoryRepository.SingletonHelper</node>
+    <node x="209.5" y="1759.0">inventory.exceptions.ModifyProductControllerException</node>
+    <node x="54.5" y="2876.0">inventory.controller.ModifyPartController</node>
+    <node x="280.0" y="3411.0">inventory.controller.AddPartController</node>
+    <node x="504.5" y="2179.0">inventory.exceptions.ModifyPartControllerException</node>
+    <node x="775.0" y="1759.0">inventory.exceptions.AddPartControllerException</node>
+    <node x="1020.0" y="2179.0">inventory.exceptions.AddProductControllerException</node>
+    <node x="10.0" y="12.0">inventory.service.InventoryService</node>
+    <node x="-194.5" y="551.0">inventory.model.Inventory</node>
+    <node x="939.0" y="-19.0">inventory.model.Part</node>
+    <node x="1056.0" y="1266.0">inventory.model.InhousePart</node>
+    <node x="506.5" y="2861.0">inventory.controller.AddProductController</node>
+    <node x="-205.0" y="1891.0">inventory.repository.InventoryRepository</node>
+    <node x="726.5" y="3366.0">inventory.controller.ModifyProductController</node>
+    <node x="-191.5" y="3276.0">inventory.controller.MainScreenController</node>
+    <node x="-189.5" y="2694.0">inventory.controller.Controller</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="inventory.model.OutsourcedPart" target="inventory.model.Part" relationship="GENERALIZATION">
+      <point x="0.0" y="-88.0" />
+      <point x="759.0" y="1234.0" />
+      <point x="1179.0" y="1234.0" />
+      <point x="0.0" y="253.0" />
+    </edge>
+    <edge source="inventory.exceptions.ModifyPartControllerException" target="inventory.exceptions.InventoryControllerException" relationship="GENERALIZATION">
+      <point x="0.0" y="-55.0" />
+      <point x="739.0" y="1734.0" />
+      <point x="459.0" y="1734.0" />
+      <point x="0.0" y="85.0" />
+    </edge>
+    <edge source="inventory.exceptions.AddPartControllerException" target="inventory.exceptions.InventoryControllerException" relationship="GENERALIZATION">
+      <point x="0.0" y="-55.0" />
+      <point x="999.0" y="1734.0" />
+      <point x="459.0" y="1734.0" />
+      <point x="0.0" y="85.0" />
+    </edge>
+    <edge source="inventory.controller.AddPartController" target="inventory.controller.Controller" relationship="REALIZATION">
+      <point x="0.0" y="-163.0" />
+      <point x="479.0" y="2834.0" />
+      <point x="19.0" y="2834.0" />
+      <point x="19.0" y="2794.0" />
+      <point x="-61.0" y="2794.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="inventory.controller.ModifyPartController" target="inventory.controller.Controller" relationship="REALIZATION">
+      <point x="0.0" y="-178.0" />
+      <point x="259.0" y="2834.0" />
+      <point x="19.0" y="2834.0" />
+      <point x="19.0" y="2794.0" />
+      <point x="-61.0" y="2794.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="inventory.controller.AddProductController" target="inventory.controller.Controller" relationship="REALIZATION">
+      <point x="0.0" y="-193.0" />
+      <point x="699.0" y="2834.0" />
+      <point x="19.0" y="2834.0" />
+      <point x="19.0" y="2794.0" />
+      <point x="-61.0" y="2794.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="inventory.repository.InventoryRepository.SingletonHelper" target="inventory.repository.InventoryRepository" relationship="INNER_CLASS">
+      <point x="0.0" y="-40.0" />
+      <point x="219.0" y="2674.0" />
+      <point x="-21.0" y="2674.0" />
+      <point x="0.0" y="343.0" />
+    </edge>
+    <edge source="inventory.controller.ModifyProductController" target="inventory.controller.Controller" relationship="REALIZATION">
+      <point x="0.0" y="-208.0" />
+      <point x="919.0" y="2834.0" />
+      <point x="19.0" y="2834.0" />
+      <point x="19.0" y="2794.0" />
+      <point x="-61.0" y="2794.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="inventory.controller.MainScreenController" target="inventory.controller.Controller" relationship="REALIZATION">
+      <point x="0.0" y="-298.0" />
+      <point x="19.0" y="2794.0" />
+      <point x="-61.0" y="2794.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="inventory.exceptions.ModifyProductControllerException" target="inventory.exceptions.InventoryControllerException" relationship="GENERALIZATION">
+      <point x="0.0" y="-55.0" />
+      <point x="0.0" y="85.0" />
+    </edge>
+    <edge source="inventory.exceptions.AddProductControllerException" target="inventory.exceptions.InventoryControllerException" relationship="GENERALIZATION">
+      <point x="0.0" y="-55.0" />
+      <point x="1259.0" y="1734.0" />
+      <point x="459.0" y="1734.0" />
+      <point x="0.0" y="85.0" />
+    </edge>
+    <edge source="inventory.model.InhousePart" target="inventory.model.Part" relationship="GENERALIZATION">
+      <point x="0.0" y="-88.0" />
+      <point x="1279.0" y="1234.0" />
+      <point x="1179.0" y="1234.0" />
+      <point x="0.0" y="253.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.4454583226796216" showDependencies="false" x="908.1713004484304" y="968.8077130044843" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -3,15 +3,26 @@ package inventory.repository;
 import inventory.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
 public class InventoryRepository {
 
-	private static String filename = "data/items.txt";
+	private static class SingletonHelper {
+		// The static field gets initialized only when the instance is accessed.
+		private static final InventoryRepository INSTANCE = new InventoryRepository();
+	}
+
+	public static InventoryRepository getInstance() {
+		return SingletonHelper.INSTANCE;
+	}
+
+	private static final Logger logger = Logger.getLogger(InventoryRepository.class);
+	private static String filename = "02_Inventory/data/items.txt";
 	private Inventory inventory;
-	public InventoryRepository(){
+	private InventoryRepository(){
 		this.inventory=new Inventory();
 		readParts();
 		readProducts();
@@ -21,22 +32,19 @@ public class InventoryRepository {
 		//ClassLoader classLoader = InventoryRepository.class.getClassLoader();
 		File file = new File(filename);
 		ObservableList<Part> listP = FXCollections.observableArrayList();
-		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new FileReader(file));
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String line = null;
 			while((line=br.readLine())!=null){
 				Part part=getPartFromString(line);
 				if (part!=null)
 					listP.add(part);
 			}
-			br.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error("File not found: " + filename, e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error( "Error reading the file: " + filename, e);
 		}
-		inventory.setAllParts(listP);
+		inventory.setParts(listP);
 	}
 
 	private Part getPartFromString(String line){
@@ -127,7 +135,7 @@ public class InventoryRepository {
 		File file = new File(filename);
 
 		BufferedWriter bw = null;
-		ObservableList<Part> parts=inventory.getAllParts();
+		ObservableList<Part> parts=inventory.getParts();
 		ObservableList<Product> products=inventory.getProducts();
 
 		try {
@@ -176,7 +184,7 @@ public class InventoryRepository {
 	}
 
 	public ObservableList<Part> getAllParts(){
-		return inventory.getAllParts();
+		return inventory.getParts();
 	}
 
 	public ObservableList<Product> getAllProducts(){
