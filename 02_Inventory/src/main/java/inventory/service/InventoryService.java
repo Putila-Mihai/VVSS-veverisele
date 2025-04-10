@@ -64,4 +64,20 @@ public class InventoryService {
         repo.deleteProduct(product);
     }
 
+    public String validateAndAddPart(String name, String price, String inStock, String min, String max, boolean isOutsourced, String partDynamicValue) {
+        String errorMessage = Part.isValidPart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), "");
+
+        if (errorMessage.length() > 0) {
+            return errorMessage;
+        }
+
+        // If no error, proceed to add part to inventory
+        if (isOutsourced) {
+            addOutsourcePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), partDynamicValue);
+        } else {
+            addInhousePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), Integer.parseInt(partDynamicValue));
+        }
+
+        return null;  // Indicating no error
+    }
 }

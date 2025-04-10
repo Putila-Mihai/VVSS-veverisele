@@ -62,7 +62,6 @@ public class AddPartController implements Initializable, Controller {
     @FXML
     private TextField minTxt;
 
-
     @Override
     public void setService(InventoryService service){
 
@@ -152,32 +151,17 @@ public class AddPartController implements Initializable, Controller {
         String min = minTxt.getText();
         String max = maxTxt.getText();
         String partDynamicValue = addPartDynamicTxt.getText();
-        errorMessage = "";
-        
-        try {
-            errorMessage = Part.isValidPart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), errorMessage);
-            if(errorMessage.length() > 0) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error Adding Part!");
-                alert.setHeaderText("Error!");
-                alert.setContentText(errorMessage);
-                alert.showAndWait();
-            } else {
-               if(isOutsourced == true) {
-                    service.addOutsourcePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), partDynamicValue);
-                } else {
-                    service.addInhousePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), Integer.parseInt(partDynamicValue));
-                }
-                displayScene(event, "/fxml/MainScreen.fxml");
-            }
-            
-        } catch (NumberFormatException e) {
-            System.out.println("Form contains blank field.");
+
+        String errorMessage = service.validateAndAddPart(name, price, inStock, min, max, isOutsourced, partDynamicValue);
+
+        if (errorMessage != null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error Adding Part!");
             alert.setHeaderText("Error!");
-            alert.setContentText("Form contains blank field.");
+            alert.setContentText(errorMessage);
             alert.showAndWait();
+        } else {
+            displayScene(event, "/fxml/MainScreen.fxml");
         }
     }
 
